@@ -11,16 +11,17 @@ PAGES_BUILT=$(patsubst $(PAGEDIR)/%.md,$(BUILDDIR)/%.html,$(PAGES))
 STATICS_BUILT=$(patsubst static/%,$(BUILDDIR)/%,$(STATICS))
 LUA_FILTER=rm-colgroup.lua
 
-MD_TO_HTML=pandoc --lua-filter=$(LUA_FILTER) --from=markdown+yaml_metadata_block
+MD_TO_HTML=pandoc --from=markdown+yaml_metadata_block
 MINIFIER=htmlmin --remove-comments --remove-all-empty-space
 TOC_MAKER=npx markdown-toc --maxdepth 5 --no-stripHeadingTags --indent="  " --bullets="-" -i
 MAPPER=npx markmap --no-open
 
-DEVNAME=gregdan3-website
+DEVNAME=scoot-site
 
 .PHONY: all clean dev stopdev
 
-all: $(BUILDDIR)/blog/index.html $(BUILDDIR)/mind-map/index.html $(PAGES_BUILT) $(STATICS_BUILT) 
+# all: $(BUILDDIR)/blog/index.html $(BUILDDIR)/mind-map/index.html $(PAGES_BUILT) $(STATICS_BUILT) 
+all: $(BUILDDIR)/blog/index.html $(PAGES_BUILT) $(STATICS_BUILT) 
 
 clean:
 	rm -rf $(BUILDDIR)/*

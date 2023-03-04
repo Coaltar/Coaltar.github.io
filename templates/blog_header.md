@@ -1,4 +1,3 @@
-% blogzone
-% gregdan3
+% Errant Thoughts
+% Cassandra
 % date unknown
-
